@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tentang Saya – Maria Goreti Dhiki</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+    .about-photo {
+      width: 100%; aspect-ratio: 3/4;
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 24px 60px rgba(44,74,62,0.15);
+      position: sticky; top: 88px;
+    }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+
+    .about-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem; font-weight: 700;
+      margin-bottom: 1rem; letter-spacing: -0.02em;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; font-weight: 300; line-height: 1.8; }
+
+    /* Stats */
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 3rem 0; }
+    .stat-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem; text-align: center; transition: border-color 0.2s, transform 0.2s; }
+    .stat-card:hover { border-color: var(--burgundy); transform: translateY(-3px); }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700; color: var(--burgundy); display: block; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); font-weight: 500; margin-top: 2px; }
+
+    /* Section divider */
+    .about-section { margin-top: 2.8rem; padding-top: 2.2rem; border-top: 1px solid var(--border); }
+    .about-section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 700;
+      margin-bottom: 1.4rem; letter-spacing: -0.01em;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .about-section-title span { font-size: 1.1rem; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before { content: ''; position: absolute; left: 7px; top: 6px; bottom: 0; width: 1px; background: var(--border); }
+    .timeline-item { position: relative; margin-bottom: 2rem; }
+    .timeline-item::before { content: ''; position: absolute; left: -24px; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: var(--burgundy); border: 2px solid var(--cream); }
+    .timeline-year { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; color: var(--burgundy-md); text-transform: uppercase; margin-bottom: 3px; }
+    .timeline-item h4 { font-size: 0.98rem; font-weight: 600; margin-bottom: 2px; }
+    .timeline-item .tl-sub { font-size: 0.82rem; color: var(--burgundy-md); font-weight: 500; margin-bottom: 4px; }
+    .timeline-item p { font-size: 0.86rem; color: var(--muted); font-weight: 300; }
+
+    /* Sertifikat */
+    .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .cert-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1rem 1.2rem;
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .cert-card:hover { border-color: var(--burgundy); transform: translateY(-2px); }
+    .cert-icon {
+      width: 36px; height: 36px; min-width: 36px;
+      background: var(--burgundy-lt); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .cert-info small { font-size: 0.7rem; color: var(--muted); font-weight: 500; display: block; margin-bottom: 2px; }
+    .cert-info strong { font-size: 0.85rem; font-weight: 600; line-height: 1.3; display: block; }
+
+    /* CTA buttons */
+    .about-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; align-items: center; }
+    .btn-download {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1.5px solid var(--border); color: var(--charcoal);
+      padding: 13px 24px; border-radius: 6px;
+      text-decoration: none; font-size: 0.88rem; font-weight: 500;
+      background: var(--white);
+      transition: all 0.2s;
+    }
+    .btn-download:hover { border-color: var(--burgundy); color: var(--burgundy); transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .cert-grid { grid-template-columns: 1fr; }
+      .about-photo { position: static; aspect-ratio: 4/3; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">MGD.</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="about.html">Tentang Saya</a></li>
+      <li><a href="skills.html">Keahlian</a></li>
+      <li><a href="projects.html">Proyek</a></li>
+      <li><a href="contact.html" class="nav-contact-btn">Hubungi Saya</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <div class="page-hero">
+      <p class="page-label">Tentang Saya</p>
+      <h1 class="page-title">Kenalan dengan <em>Maria</em></h1>
+      <p class="page-sub">Web Developer yang berfokus pada pembangunan solusi digital yang fungsional, efisien, dan berdampak nyata bagi pengguna.</p>
+    </div>
+
+    <!-- STATS -->
+    <div class="section-content" style="padding-bottom: 0;">
+      <div class="stats-row">
+        <div class="stat-card fade-in"><span class="stat-num">3+</span><span class="stat-label">Tahun Pengalaman</span></div>
+        <div class="stat-card fade-in"><span class="stat-num">4+</span><span class="stat-label">Proyek Selesai</span></div>
+        <div class="stat-card fade-in"><span class="stat-num">4</span><span class="stat-label">Sertifikat</span></div>
+        <div class="stat-card fade-in"><span class="stat-num">Web</span><span class="stat-label">Spesialisasi</span></div>
+      </div>
+    </div>
+
+    <!-- ABOUT GRID -->
+    <div class="section-content">
+      <div class="about-grid">
+
+        <!-- Foto -->
+        <div class="about-photo fade-in">
+          <img src="assets/img/Given.jpeg" alt="Maria Goreti Dhiki"/>
+        </div>
+
+        <!-- Konten kanan -->
+        <div class="about-text fade-in">
+          <h3>Halo, saya Maria!</h3>
+          <p>Saya adalah seorang Web Developer dengan pengalaman membangun aplikasi web yang fungsional dan berorientasi pada kebutuhan pengguna. Saya berfokus pada pengembangan sistem yang tidak hanya berjalan dengan baik secara teknis, tetapi juga memberikan nilai nyata bagi penggunanya.</p>
+          <p>Telah menangani berbagai proyek mulai dari sistem manajemen sekolah, manajemen parkir, hingga solusi IoT terintegrasi — saya terbiasa bekerja mandiri maupun kolaborasi dalam tim dengan standar kerja yang disiplin dan berorientasi hasil.</p>
+          <p>Saya terbuka untuk proyek baru, kolaborasi, maupun kesempatan kerja yang menantang di bidang pengembangan web dan teknologi digital.</p>
+
+          <!-- PENGALAMAN -->
+          <div class="about-section">
+            <div class="about-section-title"><span>💼</span> Pengalaman</div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-year">Januari – Maret 2025</div>
+                <h4>Magang – SDI Nurul Ulum</h4>
+                <div class="tl-sub">Web Developer Intern</div>
+                <p>Mengembangkan website sistem absensi berbasis web, membuat sistem pembayaran sekolah digital, mengelola data siswa, dan bekerja sama dalam pengujian sistem.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- PENDIDIKAN -->
+          <div class="about-section">
+            <div class="about-section-title"><span>🎓</span> Pendidikan</div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-year">2022 – Sekarang</div>
+                <h4>S1 Teknik Informatika</h4>
+                <div class="tl-sub">Universitas 17 Agustus 1945</div>
+                <p>Mempelajari dasar-dasar ilmu komputer seperti pemrograman, pengolahan data, database, pengembangan web, dan analisis sistem.</p>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2019 – 2022</div>
+                <h4>SMA – Bahasa &amp; Budaya</h4>
+                <div class="tl-sub">SMAK Frateran Ndao Ende</div>
+                <p>Mempelajari sastra Inggris, sastra Jerman, sastra Indonesia, serta antropologi — mengembangkan kemampuan komunikasi dan berpikir kritis.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SERTIFIKAT -->
+          <div class="about-section">
+            <div class="about-section-title"><span>🏆</span> Sertifikat</div>
+            <div class="cert-grid">
+              <div class="cert-card fade-in">
+                <div class="cert-icon">🖥️</div>
+                <div class="cert-info">
+                  <small>2025 · Microsoft</small>
+                  <strong>Introduction to Computers</strong>
+                </div>
+              </div>
+              <div class="cert-card fade-in">
+                <div class="cert-icon">🏅</div>
+                <div class="cert-info">
+                  <small>2024 · IBM</small>
+                  <strong>Practice Exam for CompTIA Tech+ Certification</strong>
+                </div>
+              </div>
+              <div class="cert-card fade-in">
+                <div class="cert-icon">📊</div>
+                <div class="cert-info">
+                  <small>2024 · Coursera Project Network</small>
+                  <strong>Google Ads for Beginners</strong>
+                </div>
+              </div>
+              <div class="cert-card fade-in">
+                <div class="cert-icon">🎨</div>
+                <div class="cert-info">
+                  <small>2023 · Coursera Project Network</small>
+                  <strong>Get Started with Figma</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="about-cta">
+            <a href="contact.html" class="btn-primary">Hubungi Saya</a>
+            <a href="projects.html" class="btn-outline">Lihat Proyek</a>
+            <a href="assets/cv/Maria_Goreti_Dhiki_CV.pdf" download="Maria_Goreti_Dhiki_CV.pdf" class="btn-download">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download CV
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2025 Maria Goreti Dhiki. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

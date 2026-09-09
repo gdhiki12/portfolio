@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maria Goreti Dhiki – Web Developer</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <style>
+    .home-hero {
+      min-height: calc(100vh - 68px);
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; padding: 80px 6% 60px; gap: 4rem;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--burgundy-lt); color: var(--burgundy);
+      font-size: 0.73rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 7px 18px; border-radius: 4px; margin-bottom: 1.6rem;
+    }
+    .home-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5.5vw, 5rem);
+      font-weight: 700; line-height: 1.05;
+      letter-spacing: -0.02em; margin-bottom: 1.3rem;
+    }
+    .home-hero h1 em { font-style: italic; color: var(--burgundy); }
+    .home-hero p { color: var(--muted); max-width: 460px; margin-bottom: 2.5rem; font-weight: 300; font-size: 1.05rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .hero-visual { display: flex; justify-content: center; position: relative; }
+    .avatar-frame {
+      width: 340px; height: 420px; border-radius: 16px;
+      overflow: hidden; position: relative;
+      box-shadow: 0 32px 72px rgba(123,45,62,0.2), 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .avatar-frame img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    /* Subtle warm overlay at bottom */
+    .avatar-frame::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+      background: linear-gradient(to top, rgba(123,45,62,0.15), transparent);
+    }
+    .hero-badge {
+      position: absolute; bottom: 28px; right: -20px;
+      background: var(--charcoal); color: var(--white);
+      border-radius: 10px; padding: 14px 22px;
+      font-size: 0.83rem; font-weight: 500;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    }
+    .hero-badge span { display: block; font-size: 0.7rem; opacity: 0.55; margin-bottom: 3px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .hero-badge strong { color: #6FCF97; }
+
+    /* Decorative dot pattern */
+    .hero-deco {
+      position: absolute; top: -20px; left: -20px;
+      width: 120px; height: 120px; opacity: 0.12;
+      background-image: radial-gradient(var(--burgundy) 1.5px, transparent 1.5px);
+      background-size: 14px 14px;
+      z-index: -1;
+    }
+
+    .info-strip {
+      display: flex; flex-wrap: wrap;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: var(--warm-white);
+    }
+    .info-strip-item {
+      display: flex; flex-direction: column; gap: 3px;
+      padding: 28px 4%; flex: 1; border-right: 1px solid var(--border);
+    }
+    .info-strip-item:last-child { border-right: none; }
+    .info-strip-item small { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; }
+    .info-strip-item strong { font-size: 0.95rem; font-weight: 600; }
+
+    /* Services dark section */
+    .services-section {
+      background: var(--charcoal);
+      padding: 80px 6%; color: var(--white);
+    }
+    .sec-label {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--burgundy-acc);
+      margin-bottom: 0.6rem; text-align: center;
+    }
+    .services-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3vw, 2.6rem); font-weight: 600;
+      text-align: center; margin-bottom: 3rem; letter-spacing: -0.01em;
+    }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .service-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px; padding: 2rem; transition: all 0.25s;
+    }
+    .service-card:hover { background: rgba(196,117,138,0.12); border-color: rgba(196,117,138,0.3); transform: translateY(-4px); }
+    .service-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: rgba(196,117,138,0.15); border: 1px solid rgba(196,117,138,0.2);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem;
+    }
+    .service-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; }
+    .service-card p { font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 1rem; }
+    .service-screenshot {
+      margin-top: 1rem;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .service-screenshot img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      opacity: 0.8;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .service-card:hover .service-screenshot img {
+      opacity: 1;
+      transform: scale(1.03);
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 88px 6%; text-align: center;
+      background: var(--burgundy-lt);
+      border-top: 1px solid var(--border);
+    }
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700;
+      margin-bottom: 1rem; letter-spacing: -0.01em;
+    }
+    .cta-section h2 em { font-style: italic; color: var(--burgundy); }
+    .cta-section p { color: var(--muted); max-width: 480px; margin: 0 auto 2.2rem; font-weight: 300; }
+
+    @media (max-width: 768px) {
+      .home-hero { grid-template-columns: 1fr; padding-top: 80px; }
+      .hero-visual { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .info-strip-item { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">MGD.</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="about.html">Tentang</a></li>
+      <li><a href="skills.html">Keahlian</a></li>
+      <li><a href="projects.html">Proyek</a></li>
+      <li><a href="contact.html" class="nav-contact-btn">Hubungi Saya</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-wrapper">
+    <section class="home-hero">
+      <div>
+        <div class="hero-tag">Web Developer &amp; UI/UX Designer</div>
+        <h1>Maria <em>Goreti</em> Dhiki</h1>
+        <p>Membangun aplikasi web yang fungsional, efisien, dan berdampak — dari sistem manajemen hingga desain antarmuka yang intuitif.</p>
+        <div class="hero-btns">
+          <a href="projects.html" class="btn-primary">Lihat Proyek</a>
+          <a href="contact.html" class="btn-outline">Hubungi Saya</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-deco"></div>
+        <div class="avatar-frame">
+          <img src="assets/img/Given.jpeg" alt="Maria Goreti Dhiki"/>
+        </div>
+        <div class="hero-badge">
+          <span>Status</span>
+          <strong>● Tersedia</strong> untuk Proyek
+        </div>
+      </div>
+    </section>
+
+    <div class="info-strip">
+      <div class="info-strip-item fade-in"><small>Spesialisasi</small><strong>Web Development</strong></div>
+      <div class="info-strip-item fade-in"><small>Bidang</small><strong>Sistem Manajemen &amp; UI/UX</strong></div>
+      <div class="info-strip-item fade-in"><small>Tech Stack</small><strong>Laravel · PHP · MySQL</strong></div>
+      <div class="info-strip-item fade-in"><small>Status</small><strong style="color:var(--burgundy)">● Terbuka untuk Proyek</strong></div>
+    </div>
+
+    <section class="services-section">
+      <p class="sec-label">Yang Saya Lakukan</p>
+      <h2>Solusi Terbaik di Setiap Tahap</h2>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--burgundy-acc)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>
+            </svg>
+          </div>
+          <div class="service-screenshot">
+            <img src="assets/img/web.avif" alt="Screenshot Pengembangan Web"/>
+          </div>
+          <h4>Pengembangan Web</h4>
+          <p>Membangun aplikasi web full-stack responsif dengan Laravel dan PHP yang menyelesaikan masalah nyata.</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--burgundy-acc)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+          </div>
+          <div class="service-screenshot">
+            <img src="assets/img/database.avif" alt="Screenshot Desain Database"/>
+          </div>
+          <h4>Desain Database</h4>
+          <p>Merancang struktur database MySQL yang efisien untuk sistem manajemen, memastikan integritas dan performa data.</p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--burgundy-acc)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+              <rect x="8" y="6" width="8" height="5" rx="1"/>
+            </svg>
+          </div>
+          <div class="service-screenshot">
+            <img src="assets/img/ui.avif" alt="Screenshot UI/UX Design"/>
+          </div>
+          <h4>UI/UX Design</h4>
+          <p>Merancang antarmuka yang intuitif dan estetis menggunakan Figma, dari wireframe hingga prototipe interaktif.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <h2>Punya proyek yang <em>menarik?</em></h2>
+      <p>Saya selalu terbuka untuk kolaborasi baru. Mari wujudkan ide digitalmu bersama.</p>
+      <a href="contact.html" class="btn-primary">Mulai Diskusi →</a>
+    </section>
+
+    <footer><p>© 2025 Maria Goreti Dhiki. All rights reserved.</p></footer>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
