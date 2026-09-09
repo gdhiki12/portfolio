@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --burgundy:    #7B2D3E;
+  --burgundy-dk: #561E2B;
+  --burgundy-md: #9B3D51;
+  --burgundy-lt: #F5EAED;
+  --burgundy-acc:#C4758A;
+  --cream:       #FAF6F1;
+  --warm-white:  #FFFCF9;
+  --sand:        #EDE6DC;
+  --charcoal:    #1E1A18;
+  --muted:       #7A6E6A;
+  --border:      #E8DED8;
+  --white:       #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; width: 100%;
+  background: rgba(250,246,241,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100; padding: 0 6%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--charcoal); text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
+.nav-links a {
+  text-decoration: none; color: var(--muted);
+  font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em;
+  transition: color 0.2s; position: relative; padding-bottom: 4px;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 1.5px; background: var(--burgundy);
+  transition: width 0.25s;
+}
+.nav-links a:hover { color: var(--burgundy); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--burgundy); }
+.nav-links a.active::after { width: 100%; }
+.nav-contact-btn {
+  display: inline-block;
+  background: var(--burgundy); color: var(--white) !important;
+  padding: 9px 22px; border-radius: 6px;
+  font-size: 0.85rem !important; font-weight: 500 !important;
+  text-decoration: none; transition: background 0.2s !important;
+}
+.nav-contact-btn:hover { background: var(--burgundy-md) !important; }
+.nav-contact-btn::after { display: none !important; }
+
+/* PAGE WRAPPER */
+.page-wrapper { padding-top: 68px; min-height: 100vh; }
+
+/* PAGE HERO */
+.page-hero {
+  padding: 72px 6% 60px;
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
+}
+.page-label {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--burgundy-md);
+  margin-bottom: 0.7rem;
+}
+.page-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 700;
+  line-height: 1.12; letter-spacing: -0.01em;
+}
+.page-title em { font-style: italic; color: var(--burgundy); }
+.page-sub {
+  color: var(--muted); max-width: 540px;
+  margin-top: 0.9rem; font-size: 1rem; font-weight: 300;
+}
+
+/* SECTION CONTENT */
+.section-content { padding: 64px 6%; }
+
+/* BUTTONS */
+.btn-primary {
+  display: inline-block;
+  background: var(--burgundy); color: var(--white);
+  padding: 13px 30px; border-radius: 6px;
+  text-decoration: none; font-size: 0.9rem; font-weight: 500;
+  transition: background 0.2s, transform 0.15s; letter-spacing: 0.01em;
+}
+.btn-primary:hover { background: var(--burgundy-md); transform: translateY(-2px); }
+.btn-outline {
+  display: inline-block;
+  border: 1.5px solid var(--charcoal); color: var(--charcoal);
+  padding: 13px 30px; border-radius: 6px;
+  text-decoration: none; font-size: 0.9rem; font-weight: 500;
+  transition: all 0.2s;
+}
+.btn-outline:hover { border-color: var(--burgundy); color: var(--burgundy); transform: translateY(-2px); }
+
+/* FOOTER */
+footer {
+  text-align: center; padding: 2rem 6%;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem; color: var(--muted);
+  background: var(--cream);
+}
+
+/* FADE IN */
+.fade-in {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links { gap: 1rem; }
+  .page-hero { padding: 50px 5% 40px; }
+  .section-content { padding: 44px 5%; }
+}
