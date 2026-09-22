@@ -49,11 +49,15 @@
     .project-card.hidden { display: none; }
     @media (max-width: 640px) { .projects-grid { grid-template-columns: 1fr; } }
   </style>
+  <link rel="stylesheet" href="assets/css/responsive.css"/>
 </head>
 <body>
   <nav>
     <a href="index.html" class="nav-logo">MGD.</a>
-    <ul class="nav-links">
+    <button class="nav-toggle" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="primary-navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="primary-navigation">
       <li><a href="index.html">Beranda</a></li>
       <li><a href="about.html">Tentang Saya</a></li>
       <li><a href="skills.html">Keahlian</a></li>

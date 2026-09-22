@@ -39,11 +39,15 @@
     .success-msg { display: none; background: var(--burgundy-lt); border: 1px solid #b2cfca; color: var(--burgundy); border-radius: 8px; padding: 14px 18px; font-size: 0.9rem; margin-top: 1rem; text-align: center; font-weight: 500; }
     @media (max-width: 768px) { .contact-layout { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
   </style>
+  <link rel="stylesheet" href="assets/css/responsive.css"/>
 </head>
 <body>
   <nav>
     <a href="index.html" class="nav-logo">MGD.</a>
-    <ul class="nav-links">
+    <button class="nav-toggle" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="primary-navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="primary-navigation">
       <li><a href="index.html">Beranda</a></li>
       <li><a href="about.html">Tentang</a></li>
       <li><a href="skills.html">Keahlian</a></li>
