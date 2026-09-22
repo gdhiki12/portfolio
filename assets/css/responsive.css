@@ -1,0 +1,193 @@
+/* Responsive improvements for Maria Goreti Dhiki portfolio */
+html { overflow-x: hidden; }
+body { overflow-x: hidden; }
+img, svg { max-width: 100%; }
+
+/* Mobile navigation trigger: hidden on desktop */
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--warm-white);
+  color: var(--charcoal);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0;
+}
+.nav-toggle span {
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 999px;
+  transition: transform .25s ease, opacity .2s ease;
+}
+.nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Tablet */
+@media (max-width: 1024px) {
+  nav { padding-left: 4%; padding-right: 4%; }
+  .nav-links { gap: 1.25rem; }
+  .home-hero { gap: 2.5rem; padding-left: 5%; padding-right: 5%; }
+  .avatar-frame { width: min(310px, 34vw); height: 390px; }
+  .section-content, .services-section, .soft-section { padding-left: 5%; padding-right: 5%; }
+  .about-grid, .contact-layout { gap: 3rem; }
+}
+
+/* Phone / small tablet */
+@media (max-width: 768px) {
+  nav {
+    height: 64px;
+    padding: 0 5%;
+  }
+  .page-wrapper { padding-top: 64px; }
+  .nav-logo { font-size: 1.45rem; }
+  .nav-toggle { display: flex; position: relative; z-index: 102; }
+  .nav-links {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 12px 5% 20px;
+    background: rgba(250,246,241,.99);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 18px 40px rgba(30,26,24,.10);
+    transform: translateY(-125%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform .28s ease, opacity .22s ease, visibility .22s;
+    z-index: 101;
+  }
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 12px 4px;
+    font-size: .94rem;
+  }
+  .nav-links a::after { display: none; }
+  .nav-contact-btn {
+    margin-top: 8px;
+    text-align: center;
+    padding: 11px 18px !important;
+  }
+  body.menu-open { overflow: hidden; }
+
+  .page-hero { padding: 42px 5% 34px; }
+  .page-title { font-size: clamp(2.25rem, 12vw, 3rem); }
+  .page-sub { font-size: .94rem; }
+  .section-content { padding: 40px 5%; }
+
+  /* Home */
+  .home-hero {
+    min-height: auto !important;
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    padding: 48px 5% 42px !important;
+    text-align: left;
+  }
+  .home-hero h1 { font-size: clamp(2.8rem, 14vw, 4rem); }
+  .home-hero p { max-width: none; font-size: .98rem; margin-bottom: 1.8rem; }
+  .hero-tag { font-size: .66rem; letter-spacing: .12em; margin-bottom: 1.2rem; }
+  .hero-btns { gap: .7rem; }
+  .hero-btns .btn-primary, .hero-btns .btn-outline { padding: 11px 18px; }
+  .hero-visual {
+    display: flex !important;
+    width: 100%;
+    justify-content: center;
+    padding: 6px 0 20px;
+  }
+  .avatar-frame {
+    width: min(82vw, 310px) !important;
+    height: min(104vw, 390px) !important;
+  }
+  .hero-deco { display: none; }
+  .hero-badge { right: max(0px, calc(50% - 165px)); bottom: 4px; }
+  .info-strip { grid-template-columns: 1fr 1fr !important; }
+  .info-strip-item {
+    min-width: 0;
+    padding: 18px 16px !important;
+    border-right: 1px solid var(--border) !important;
+    border-bottom: 1px solid var(--border) !important;
+  }
+  .info-strip-item:nth-child(even) { border-right: none !important; }
+  .info-strip-item strong { overflow-wrap: anywhere; }
+  .services-section { padding: 52px 5% !important; }
+  .services-section h2 { font-size: clamp(2rem, 10vw, 2.6rem); }
+  .services-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+  .service-card { padding: 1.4rem !important; }
+  .service-screenshot img { height: auto !important; max-height: 210px; }
+  .cta-section { padding: 58px 5% !important; }
+
+  /* About */
+  .about-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  .about-photo { max-width: 360px; margin: 0 auto; }
+  .about-photo img { width: 100%; height: auto; }
+  .stats-row { grid-template-columns: 1fr 1fr !important; gap: .75rem !important; }
+  .stat-card { min-width: 0; padding: 1.15rem .8rem !important; }
+  .stat-num { font-size: 1.55rem !important; }
+  .stat-label { font-size: .74rem !important; }
+  .cert-grid { grid-template-columns: 1fr !important; }
+  .timeline-item { padding-left: 1.3rem !important; }
+  .about-cta { padding: 1.5rem !important; }
+
+  /* Projects */
+  .filter-bar {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-right: -5vw;
+    padding-right: 5vw;
+    scrollbar-width: thin;
+  }
+  .filter-btn { flex: 0 0 auto; padding: 8px 15px !important; }
+  .projects-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1rem !important; }
+  .project-card { width: 100%; min-width: 0; }
+  .project-thumb { height: 180px !important; }
+  .project-info { padding: 1.25rem !important; }
+
+  /* Skills */
+  .tools-grid, .soft-grid { grid-template-columns: 1fr !important; gap: .85rem !important; }
+  .tool-card, .soft-card { min-width: 0; }
+  .soft-section { padding: 48px 5% !important; }
+
+  /* Contact */
+  .contact-layout { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  .form-row { grid-template-columns: 1fr !important; gap: 0 !important; }
+  .contact-form-wrap, .info-card { min-width: 0; }
+  .contact-form-wrap { padding: 1.4rem !important; }
+  input, textarea, select, button { max-width: 100%; }
+  .info-text { min-width: 0; }
+  .info-text a, .info-text p { overflow-wrap: anywhere; }
+}
+
+/* Very small phones */
+@media (max-width: 430px) {
+  .home-hero { padding-top: 38px !important; }
+  .home-hero h1 { font-size: 2.75rem; }
+  .hero-btns { display: grid !important; grid-template-columns: 1fr; }
+  .hero-btns a { width: 100%; text-align: center; }
+  .info-strip { grid-template-columns: 1fr !important; }
+  .info-strip-item { border-right: none !important; }
+  .stats-row { grid-template-columns: 1fr 1fr !important; }
+  .project-thumb { height: 165px !important; }
+  .project-info h3 { font-size: 1.12rem !important; }
+  .filter-btn { font-size: .78rem !important; }
+}
